@@ -1,10 +1,12 @@
 import javax.swing.*;
-import java.awt.event.*;
 
 public class OrderedDataStructure extends RootPanel {
     private JPanel panel;
 
     private JLabel display_DS;
+
+    private JButton reverse;
+    private boolean show_reverse;
 
     private JButton front_add;
     private boolean show_add_front;
@@ -49,12 +51,17 @@ public class OrderedDataStructure extends RootPanel {
     public OrderedDataStructure() {
         super();
         panel = getRootPanel();
-        primarySetup();
+        OrderedSetup();
         enableAllComponents();
         addEnabledComponents();
     }
 
-    public void primarySetup() {
+    public void OrderedSetup() {
+        reverse = new JButton("reverse");
+        reverse.setBounds(base_width * 3, 0, base_width, base_height);
+        reverse.addActionListener(this);
+        reverse.setActionCommand("REVERSE");
+
         display_DS = new JLabel("SET DATA STRUCTURE TEXT");
         display_DS.setBounds(0, base_height * 2, 1200, base_height);
 
@@ -143,6 +150,8 @@ public class OrderedDataStructure extends RootPanel {
     }
 
     public void enableAllComponents() {
+        show_reverse = true;
+
         show_add_front = true;
         show_add_back = true;
         show_add_index = true;
@@ -173,6 +182,8 @@ public class OrderedDataStructure extends RootPanel {
     public void disableMerge() {show_merge = false;}
 
     public void addEnabledComponents() {
+        if (show_reverse) {panel.add(reverse);}
+
         if (show_add_front) {panel.add(front_add);}
         if (show_add_back) {panel.add(back_add);}
         if (show_add_index) {panel.add(index_add); panel.add(index_add_field);}

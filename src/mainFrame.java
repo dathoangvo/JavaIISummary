@@ -15,6 +15,8 @@ public class mainFrame implements ActionListener{
     private JPanel panel;
     private JButton linkedList;
     private JButton arrayList;
+    private JButton binarySearchTree;
+    private JButton hash;
 
     // Constructor
     public mainFrame() {
@@ -48,6 +50,18 @@ public class mainFrame implements ActionListener{
         arrayList.setActionCommand("LAUNCH_ARRAY_LIST");
         panel.add(arrayList);
 
+        binarySearchTree = new JButton("Binary Tree");
+        binarySearchTree.setBounds(0, 60, 100, 30);
+        binarySearchTree.addActionListener(this);
+        binarySearchTree.setActionCommand("LAUNCH_BINARY_SEARCH_TREE");
+        panel.add(binarySearchTree);
+
+        hash = new JButton("Hash");
+        hash.setBounds(0, 90, 100, 30);
+        hash.addActionListener(this);
+        hash.setActionCommand("LAUNCH_HASH");
+        panel.add(hash);
+
         frame.add(panel);
         frame.setVisible(true);
 
@@ -58,18 +72,36 @@ public class mainFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if      (e.getActionCommand().equals("LAUNCH_LINKED_LIST")) launchLinkedList();
         else if (e.getActionCommand().equals("LAUNCH_ARRAY_LIST")) launchArrayList();
+        else if (e.getActionCommand().equals("LAUNCH_BINARY_SEARCH_TREE")) launchBinarySearchTree();
+        else if (e.getActionCommand().equals("LAUNCH_HASH")) launchHash();
     }
 
 
     private void launchLinkedList() {
         LinkedListPanel linked_list = new LinkedListPanel();
-        linked_list.setHome_panel(panel);
         frame.setContentPane(linked_list.getLinkedListPanel());
         frame.repaint();
         frame.revalidate();
     }
 
     private void launchArrayList() {
+        ArrayListPanel array_list = new ArrayListPanel();
+        frame.setContentPane(array_list.getArrayListPanel());
+        frame.repaint();
+        frame.revalidate();
+    }
 
+    private void launchBinarySearchTree() {
+        BinaryTreePanel binary_tree = new BinaryTreePanel();
+        frame.setContentPane(binary_tree.getBinaryTreePanel());
+        frame.repaint();
+        frame.revalidate();
+    }
+
+    private void launchHash() {
+        HashPanel hash = new HashPanel();
+        frame.setContentPane(hash.getHashPanel());
+        frame.repaint();
+        frame.revalidate();
     }
 }

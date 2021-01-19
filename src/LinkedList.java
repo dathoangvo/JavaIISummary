@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class LinkedList {
+public class LinkedList implements OrderedDSInterface{
     private class node {
         int data;
         node next;
@@ -248,6 +248,24 @@ public class LinkedList {
             current.next = new_node;
             size++;
         }
+    }
+
+    public void reverse() {
+        LinkedList reversed_list = new LinkedList();
+        if (root.next != null) {
+            reverse(reversed_list, root.next);
+        }
+        if (root != null) {
+            reversed_list.addData(root.data);
+        }
+        root = reversed_list.root;
+    }
+
+    private void reverse(LinkedList new_root, node next) {
+        if (next.next != null) {
+            reverse(new_root, next.next);
+        }
+        new_root.addData(next.data);
     }
 
     public String toString() {

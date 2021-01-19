@@ -56,6 +56,10 @@ public class RootPanel implements ActionListener{
 
     public JPanel getHome_panel() {return home_panel;}
 
+    public boolean isValidInt(String text) {
+        return text.matches("-?\\d+(\\.\\d+)?") && !text.isEmpty();
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) { }
 }

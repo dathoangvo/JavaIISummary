@@ -48,6 +48,7 @@ public class LinkedListPanel extends OrderedDataStructure {
         else if (e.getActionCommand().equals("TOGGLE_STACK")) toggleStack();
         else if (e.getActionCommand().equals("TOGGLE_QUEUE")) toggleQueue();
         else if (e.getActionCommand().equals("CLEAR")) clear();
+        else if (e.getActionCommand().equals("REVERSE")) reverse();
     }
 
     private void updateGUI() {
@@ -164,7 +165,10 @@ public class LinkedListPanel extends OrderedDataStructure {
         addEnabledComponents();
     }
 
-    private boolean isValidInt(String text) {
-        return text.matches("-?\\d+(\\.\\d+)?") && !text.isEmpty();
+    private void reverse() {
+        linkedList.reverse();
+        updateGUI();
     }
+
+
 }
