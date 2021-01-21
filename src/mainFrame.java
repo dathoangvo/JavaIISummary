@@ -17,6 +17,7 @@ public class mainFrame implements ActionListener{
     private JButton arrayList;
     private JButton binarySearchTree;
     private JButton hash;
+    private JButton heap;
 
     // Constructor
     public mainFrame() {
@@ -62,6 +63,12 @@ public class mainFrame implements ActionListener{
         hash.setActionCommand("LAUNCH_HASH");
         panel.add(hash);
 
+        heap = new JButton("heap");
+        heap.setBounds(0, 120, 100, 30);
+        heap.addActionListener(this);
+        heap.setActionCommand("LAUNCH_HEAP");
+        panel.add(heap);
+
         frame.add(panel);
         frame.setVisible(true);
 
@@ -74,6 +81,7 @@ public class mainFrame implements ActionListener{
         else if (e.getActionCommand().equals("LAUNCH_ARRAY_LIST")) launchArrayList();
         else if (e.getActionCommand().equals("LAUNCH_BINARY_SEARCH_TREE")) launchBinarySearchTree();
         else if (e.getActionCommand().equals("LAUNCH_HASH")) launchHash();
+        else if (e.getActionCommand().equals("LAUNCH_HEAP")) launchHeap();
     }
 
 
@@ -101,6 +109,13 @@ public class mainFrame implements ActionListener{
     private void launchHash() {
         HashPanel hash = new HashPanel();
         frame.setContentPane(hash.getHashPanel());
+        frame.repaint();
+        frame.revalidate();
+    }
+
+    private void launchHeap() {
+        HeapPanel heap = new HeapPanel();
+        frame.setContentPane(heap.getHeapPanel());
         frame.repaint();
         frame.revalidate();
     }

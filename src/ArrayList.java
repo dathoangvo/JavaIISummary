@@ -1,6 +1,11 @@
-import javax.print.DocFlavor;
 import java.util.Arrays;
 import java.util.Random;
+
+/**
+ * Class demonstrating the implementation of the Array List that holds integer data type.
+ * @author Dat Vo
+ * @version 1/19/2021
+ */
 
 public class ArrayList implements OrderedDSInterface{
     int[] mainArray;
@@ -10,6 +15,12 @@ public class ArrayList implements OrderedDSInterface{
         mainArray = new int[16];
     }
 
+    /**
+     * This method adds a random number between -100 and 100 at the given index. Only add when within proper bounds of
+     * the Array list.
+     * @param index represents where the number should be added.
+     * @return the number that was added at the index.
+     */
     public int addAtIndex(int index) {
         if (index > size) {
             System.out.println("Index out of bounds");
@@ -30,6 +41,9 @@ public class ArrayList implements OrderedDSInterface{
         return temp_data;
     }
 
+    /**
+     * This method doubles the max size of the Array list once it's full.
+     */
     private void expand() {
         int[] tempArray = new int[mainArray.length * 2];
         for (int i = 0; i < mainArray.length; i++) {
@@ -38,6 +52,11 @@ public class ArrayList implements OrderedDSInterface{
         mainArray = tempArray;
     }
 
+    /**
+     * This method removes the data at the given index.
+     * @param index represents the index being deleted.
+     * @return the data value that was deleted.
+     */
     public int removeAtIndex(int index) {
         if (index > size) {
             System.out.println("Index out of bounds");
@@ -52,6 +71,11 @@ public class ArrayList implements OrderedDSInterface{
         return temp_data;
     }
 
+    /**
+     * This method finds which index holds a given value.
+     * @param int_to_find represents the value being searched for.
+     * @return a list of all the index holding the given value.
+     */
     @Override
     public String find(int int_to_find) {
         String builder = "";
@@ -63,6 +87,11 @@ public class ArrayList implements OrderedDSInterface{
         return builder;
     }
 
+    /**
+     * This method gets the value at a given index.
+     * @param index_to_get represents the index we are getting the value of.
+     * @return a string of the value at the given index.
+     */
     @Override
     public String get(int index_to_get) {
         if (index_to_get < size && index_to_get >= 0) {
@@ -72,17 +101,26 @@ public class ArrayList implements OrderedDSInterface{
         }
     }
 
+    /**
+     * This method resets the Array List to as if it was first initialized.
+     */
     @Override
     public void clear() {
         mainArray = new int[16];
         size = 0;
     }
 
+    /**
+     * @return the amount of numbers stored in the array list.
+     */
     @Override
     public int getSize() {
         return size;
     }
 
+    /**
+     * This method sorts the Array list using the insertion sort algorithm.
+     */
     @Override
     public void insertionSort() {
         for (int i = 1; i < size; i++) {
@@ -96,6 +134,10 @@ public class ArrayList implements OrderedDSInterface{
         }
     }
 
+    /**
+     * This method sorts the Array list using the merge sort algorithm. Also acts as the helper method for the recursive
+     * merge sort method.
+     */
     @Override
     public void mergesort() {
         if (size > 2) {
@@ -121,6 +163,12 @@ public class ArrayList implements OrderedDSInterface{
         }
     }
 
+    /**
+     * Recursive merge sort method. Merges the left and right array together after sorting them each.
+     * @param left_array represents the left array being merged.
+     * @param right_array represents the right array being merged.
+     * @return a sorted merged version of the left_array and right_array.
+     */
     private int[] mergesort(int[] left_array, int[] right_array) {
         if (left_array.length > 1) {
             int middle = left_array.length / 2;
@@ -155,6 +203,12 @@ public class ArrayList implements OrderedDSInterface{
         return merge(left_array, right_array);
     }
 
+    /**
+     * This method merges the two given array together in ascending order.
+     * @param left_array represents one of the array being merged and sorted.
+     * @param right_array represents the other array being merged and sorted.
+     * @return a merged and sorted version of the left_array and right_array.
+     */
     private int[] merge(int[] left_array, int[] right_array) {
         int[] return_array = new int[left_array.length + right_array.length];
         int return_traversal = 0;
@@ -185,6 +239,9 @@ public class ArrayList implements OrderedDSInterface{
         return return_array;
     }
 
+    /**
+     * This method reverses the order of the entire Array list.
+     */
     @Override
     public void reverse() {
         int[] reversed_array = new int[mainArray.length];
@@ -197,6 +254,9 @@ public class ArrayList implements OrderedDSInterface{
     }
 
 
+    /**
+     * @return a string representation of the Array List.
+     */
     public String toString() {
         String builder = "";
         for (int i = 0; i < size; i++) {
