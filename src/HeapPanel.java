@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 
 public class HeapPanel extends UnorderedDataStructure{
     private JPanel panel;
-    private HeapRevised heap;
+    private Heap heap;
     private JTextArea heap_text;
 
     private JButton toggle_min_heap;
@@ -16,7 +16,7 @@ public class HeapPanel extends UnorderedDataStructure{
 
     private void heapSetup() {
         panel = getUnorderedDataStructurePanel();
-        heap = new HeapRevised();
+        heap = new Heap();
 
         heap_text = new JTextArea();
         heap_text.setBounds(0, base_height * 7, 2000, 200);

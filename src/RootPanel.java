@@ -33,7 +33,7 @@ public class RootPanel implements ActionListener{
         clear_button.setActionCommand("CLEAR");
 
 
-        size = new JLabel("current size: 0");
+        size = new JLabel("size: 0");
         size.setBounds(base_width * 2 + base_height, 0, base_width, base_height);
 
     }
